@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://live.zwidgets.com/js-sdk/1.2/ZohoEmbededAppSDK.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <div class="form-container">
+        <!-- Pop-up Form for Stakeholder Entry -->
+        <div id="stakeholder-form" class="stakeholder-form">
+            <form id="record-form">
+                <label for="stake-holder-type">Stakeholder Type</label>
+                <select id="stake-holder-type" name="stake-holder-type" onchange="toggleForms()">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Natural Person">Natural Person</option>
+                    <option value="Legal Person">Legal Person</option>
+                </select>
+
+                <!-- Natural Person Form -->
+                <div id="natural-person-form" style="display: none;">
+                    <label for="title">Title</label>
+                    <select id="title" name="title">
+                        <option value="" disabled selected>Select Title</option>
+                        <option value="Mr.">Mr.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Dr.">Dr.</option>
+                    </select>
+
+                    <label for="first-name">First Name <span class="mandatory">*</span></label>
+                    <input type="text" id="first-name" name="first-name" required>
+
+                    <label for="middle-name">Middle Name</label>
+                    <input type="text" id="middle-name" name="middle-name">
+
+                    <label for="last-name">Last Name <span class="mandatory">*</span></label>
+                    <input type="text" id="last-name" name="last-name" required>
+
+                    <label for="natural-stakeholder-role">Stakeholder Role <span class="mandatory">*</span></label>
+                    <select id="natural-stakeholder-role" name="natural-stakeholder-role" required onchange="toggleSharesField()" multiple="multiple">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="General Manager/Representative">General Manager/Representative</option>
+                        <option value="Secretary">Secretary</option>
+                        <option value="Director">Director</option>
+                        <option value="Shareholder">Shareholder</option>
+                        <option value="UBO">UBO</option>
+                        <option value="Authorized Person">Authorized Person</option>
+                        <option value="Power of Attorney">Power of Attorney</option>
+                    </select>
+
+                    <div id="shares-container" style="display: none;">
+                        <label for="number-of-shares">Number of Shares <span class="mandatory">*</span></label>
+                        <input type="number" id="number-of-shares" name="number-of-shares">
+                    </div>
+
+                    <label for="email-address">Email Address</label>
+                    <input type="email" id="email-address" name="email-address">
+                </div>
+
+                <!-- Legal Person Form -->
+                <div id="legal-person-form" style="display: none;">
+                    <label for="registered-name">Registered Name <span class="mandatory">*</span></label>
+                    <input type="text" id="registered-name" name="registered-name" required>
+
+                    <label for="legal-stakeholder-role">Stakeholder Role <span class="mandatory">*</span></label>
+                    <select id="legal-stakeholder-role" name="legal-stakeholder-role" required onchange="toggleSharesField()">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Shareholder">Shareholder</option>
+                    </select>
+
+                    <label for="legal-number-of-shares">Number of Shares <span class="mandatory">*</span></label>
+                    <input type="number" id="legal-number-of-shares" name="legal-number-of-shares" required>
+
+                    <label for="legal-email-address">Email Address <span class="mandatory">*</span></label>
+                    <input type="email" id="legal-email-address" name="legal-email-address" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="button" id="submit_button_id">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
