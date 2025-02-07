@@ -1,3 +1,5 @@
+//Live - /widget.html
+//Development - //https://127.0.0.1:5000/app/widget.html
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submit_button_id").addEventListener("click", create_record);
     document.getElementById("stake-holder-type").addEventListener("change", toggleForms);
