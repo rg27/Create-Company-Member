@@ -77,8 +77,16 @@
                     <input type="email" id="legal-email-address" name="legal-email-address" required>
                 </div>
 
+                <div class="popup-overlay hidden" id="popup">
+                    <div class="popup-content">
+                      <button class="close-button" onclick="hidePopup()">×</button>
+                      <h3 id="popupTitle">Action Status</h3>
+                      <p id="popupMessage">Default message</p>
+                    </div>
+                </div>
+
                 <!-- Submit Button -->
-                <button type="button" id="submit_button_id">Submit</button>
+                <button class="submit-button" type="button" id="submit_button_id">Submit</button>
             </form>
         </div>
     </div>

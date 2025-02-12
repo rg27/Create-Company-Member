@@ -9,6 +9,27 @@ document.addEventListener("DOMContentLoaded", () => {
 let application_name, application_id, contact_id, account_id, deal_id, cm_id;
 let stakeholderRecord = {};
 
+// Function to display a popup with a custom message
+function showPopup(message, type = "restricted") {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popupMessage");
+    const popupTitle = document.getElementById("popupTitle");
+  
+    popupMessage.textContent = message;
+  
+    if (type === "success") {
+      popup.classList.add("success");
+      popup.classList.remove("restricted");
+      popupTitle.textContent = "Success!";
+    } else {
+      popup.classList.add("restricted");
+      popup.classList.remove("success");
+      popupTitle.textContent = "Action Restricted";
+    }
+  
+    popup.classList.remove("hidden");
+  }
+
 // Load Zoho CRM Data on Page Load
 ZOHO.embeddedApp.on("PageLoad", async (entity) => {
     try {
@@ -84,7 +105,7 @@ function getFullName(){
         const first_name = document.getElementById("first-name").value;
         const middle_name = document.getElementById("middle-name").value;
         const last_name = document.getElementById("last-name").value;
-        full_name = `${first_name} ${middle_name} ${last_name}`.trim();git 
+        full_name = `${first_name} ${middle_name} ${last_name}`.trim();
     } else if(stakeholder_type === "Legal Person"){
         const registered_name = document.getElementById("registered-name").value;
         full_name = registered_name;
@@ -125,15 +146,24 @@ async function create_record(event) {
             APIData: stakeholderRecord,
             Trigger: ["workflow"],
         });
-        cm_id = response.data[0].details.id; // Assign globally declared cm_id here
+        cm_id = response.data[0].details.id;
+        console.log("CREATED COMPANY MEMBER ID: " + cm_id);
         console.log("Response from API: ", response);
         if (response.data[0].code === "SUCCESS") {
             console.log("Record created successfully!");
-            alert("Record created successfully!");
+
+            const message = "Company Member created successfully!";
+            showPopup(message, "success");
+            
+            //REDIRECT TO THE NEWLY CREATED COMPANY MEMBER RECORD
+            const company_member_url = "https://crm.zoho.com/crm/org682300086/tab/CustomModule32/" + cm_id;
+            window.open(company_member_url, '_blank').focus();
+
             // Clear the stakeholder record data after successful submission
             stakeholderRecord = {};
         } else {
-            alert("Error: " + response.data[0].message);
+            const message = "Please Contact Support regarding this issue. " + response.data[0].message;
+            showPopup(message);
             console.log("ERROR CREATING COMPANY MEMBERS, PLEASE CONTACT SUPPORT TEAM");
         }
     } catch (error) {
@@ -167,12 +197,10 @@ async function create_record(event) {
         console.log("Compliance response from API: ", response);
         if (response.data[0].code === "SUCCESS") {
             console.log("Compliance record created successfully!");
-            alert("Compliance record created successfully!");
             // Clear the stakeholder record data after successful submission
             complianceRecord = {};
         } else {
-            alert("Error: " + response.data[0].message);
-            console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM");
+            console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM Error: " + response.data[0].message);
         }
     } catch (error) {
         console.error("API Error during compliance record creation:", error);
@@ -230,8 +258,13 @@ function toggleSharesField() {
     }
 }
 
+// Function to close the pop-up messages
+function hidePopup() {
+    ZOHO.CRM.UI.Popup.close();
+}
 
-// Function to show the stakeholder form as a pop-up
+
+// Function to show the stakeholder
 function showStakeholderForm() {
     document.getElementById("stakeholder-form").style.display = "block";
 }
