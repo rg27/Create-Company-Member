@@ -137,6 +137,7 @@ async function create_record(event) {
         JP_Company_Name: document.getElementById("registered-name").value,
         Account: account_id,
         Contact_Name: contact_id,
+        Layout: "3769920000261136001"
     };
 
     try {
