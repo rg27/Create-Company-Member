@@ -125,6 +125,7 @@ async function create_record(event) {
     // Populate stakeholderRecord from form fields
     stakeholderRecord = {
         Application_No: application_id,
+        Layout: "3769920000261136001",
         Title: document.getElementById("title").value,
         First_Name: document.getElementById("first-name").value,
         Middle_Name: document.getElementById("middle-name").value,
@@ -136,8 +137,8 @@ async function create_record(event) {
         Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value,
         JP_Company_Name: document.getElementById("registered-name").value,
         Account: account_id,
-        Contact_Name: contact_id,
-        Layout: "3769920000261136001"
+        Contact_Name: contact_id
+        
     };
 
     try {
