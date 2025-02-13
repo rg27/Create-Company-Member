@@ -137,8 +137,7 @@ async function create_record(event) {
         Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value,
         JP_Company_Name: document.getElementById("registered-name").value,
         Account: account_id,
-        Contact_Name: contact_id
-        
+        Full_Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value 
     };
 
     try {
