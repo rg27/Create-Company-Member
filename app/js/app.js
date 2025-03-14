@@ -131,11 +131,12 @@ async function create_record(event) {
         Middle_Name: document.getElementById("middle-name").value,
         Last_Name: document.getElementById("last-name").value,
         Roles_s: getSelectedRoles(),
-        Email: document.getElementById("email-address").value || document.getElementById("legal-email-address").value,
+        Email: document.getElementById("email-address").value,
         Number_of_Shares: document.getElementById("number-of-shares").value || document.getElementById("legal-number-of-shares").value,
         Shareholder_Type: document.getElementById("stake-holder-type").value,
         Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value,
         JP_Company_Name: document.getElementById("registered-name").value,
+        JP_Email_Address:  document.getElementById("legal-email-address").value,
         Account: account_id,
         Full_Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value 
     };
@@ -201,7 +202,7 @@ async function create_record(event) {
             // Clear the stakeholder record data after successful submission
             complianceRecord = {};
         } else {
-            console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM Error: " + response.data[0].message);
+            console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM ERROR: " + response.data[0].message);
         }
     } catch (error) {
         console.error("API Error during compliance record creation:", error);
