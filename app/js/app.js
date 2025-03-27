@@ -135,7 +135,7 @@ async function create_record(event) {
         Number_of_Shares: document.getElementById("number-of-shares").value || document.getElementById("legal-number-of-shares").value,
         Shareholder_Type: document.getElementById("stake-holder-type").value,
         Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value,
-        JP_Company_Name: document.getElementById("registered-name").value,
+        JP_Company_Brand_Name: document.getElementById("registered-name").value,
         JP_Email_Address:  document.getElementById("legal-email-address").value,
         Account: account_id,
         Full_Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("last-name").value 
