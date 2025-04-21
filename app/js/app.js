@@ -20,7 +20,7 @@ function showPopup(message, type = "restricted") {
     if (type === "success") {
       popup.classList.add("success");
       popup.classList.remove("restricted");
-      popupTitle.textContent = "Success!";
+      popupTitle.textContent = "";
     } else {
       popup.classList.add("restricted");
       popup.classList.remove("success");

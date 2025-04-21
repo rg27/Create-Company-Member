@@ -109,6 +109,7 @@ width: 100%;
 height: 100%;
 background: rgba(0, 0, 0, 0.5);
 z-index: 1000;
+background-color: #e8e5e5f2;
 }
 
 .popup-overlay:not(.hidden) {
@@ -131,26 +132,26 @@ width: 300px;
 
 /* Shared Popup Header */
 .popup-content h3 {
-font-size: 18px;
+font-size: 5px;
 margin-bottom: 10px;
 }
 
 /* Restricted Popup */
 .popup-overlay.restricted .popup-content h3 {
-color: #e63946; /* Red for error */
+color: #000;
 }
 
 .popup-overlay.restricted .popup-content p {
-color: #e63946;
+color: #000;
 }
 
 /* Success Popup */
 .popup-overlay.success .popup-content h3 {
-color: #28a745; /* Green for success */
+color: #000;
 }
 
 .popup-overlay.success .popup-content p {
-color: #28a745;
+color: #000;
 }
 
 .close-button {
