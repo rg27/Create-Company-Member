@@ -173,41 +173,41 @@ async function create_record(event) {
         alert("API Error during record creation: " + error.message);
     }
 
-    complianceRecord = {
-        Account_Name: account_id,
-        Contact_Name: contact_id,
-        Company_Member_Record: cm_id,
-        Layout: "3769920000233312114",
-        Application_Record: application_id,
-        Fullname_Company_Name: getFullName(),
-        Title: document.getElementById("title").value,
-        First_Name: document.getElementById("first-name").value,
-        Middle_Name: document.getElementById("middle-name").value,
-        Last_Name: document.getElementById("last-name").value,
-        Record_Type: document.getElementById("stake-holder-type").value,
-        Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("middle-name").value  +  " " + document.getElementById("last-name").value,
-    };
+    // complianceRecord = {
+    //     Account_Name: account_id,
+    //     Contact_Name: contact_id,
+    //     Company_Member_Record: cm_id,
+    //     Layout: "3769920000233312114",
+    //     Application_Record: application_id,
+    //     Fullname_Company_Name: getFullName(),
+    //     Title: document.getElementById("title").value,
+    //     First_Name: document.getElementById("first-name").value,
+    //     Middle_Name: document.getElementById("middle-name").value,
+    //     Last_Name: document.getElementById("last-name").value,
+    //     Record_Type: document.getElementById("stake-holder-type").value,
+    //     Name: document.getElementById("registered-name").value || document.getElementById("first-name").value + " " + document.getElementById("middle-name").value  +  " " + document.getElementById("last-name").value,
+    // };
 
-    try {
-        console.log("Attempting to create record: ", complianceRecord);
-        const response = await ZOHO.CRM.API.insertRecord({
-            Entity: "AML_Compliances",
-            APIData: complianceRecord,
-            Trigger: ["workflow"],
-        });
+    // try {
+    //     console.log("Attempting to create record: ", complianceRecord);
+    //     const response = await ZOHO.CRM.API.insertRecord({
+    //         Entity: "AML_Compliances",
+    //         APIData: complianceRecord,
+    //         Trigger: ["workflow"],
+    //     });
 
-        console.log("Compliance response from API: ", response);
-        if (response.data[0].code === "SUCCESS") {
-            console.log("Compliance record created successfully!");
-            // Clear the stakeholder record data after successful submission
-            complianceRecord = {};
-        } else {
-            console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM ERROR: " + response.data[0].message);
-        }
-    } catch (error) {
-        console.error("API Error during compliance record creation:", error);
-        alert("API Error during compliance record creation: " + error.message);
-    }
+    //     console.log("Compliance response from API: ", response);
+    //     if (response.data[0].code === "SUCCESS") {
+    //         console.log("Compliance record created successfully!");
+    //         // Clear the stakeholder record data after successful submission
+    //         complianceRecord = {};
+    //     } else {
+    //         console.log("ERROR CREATING COMPLIANCE RECORD, PLEASE CONTACT SUPPORT TEAM ERROR: " + response.data[0].message);
+    //     }
+    // } catch (error) {
+    //     console.error("API Error during compliance record creation:", error);
+    //     alert("API Error during compliance record creation: " + error.message);
+    // }
 }
 
 // Utility function to add or remove required attributes
