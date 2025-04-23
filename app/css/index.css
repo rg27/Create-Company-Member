@@ -4,52 +4,53 @@
     margin: 0;
     padding: 0;
     font-family: 'Lato', Arial, sans-serif;
-}
-
-/* Body Styling */
-body {
+  }
+  
+  /* Body Styling */
+  body {
     background-color: #f3f4f6;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-/* Form Container */
-.form-container {
+  }
+  
+  /* Form Container */
+  .form-container {
     background-color: #fff;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-}
-
-/* Input and Select Elements */
-select, input[type="text"], input[type="email"], input[type="number"] {
+  }
+  
+  /* Input and Select Elements */
+  select, input[type="text"], input[type="email"], input[type="number"], #role-input {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 12px;
-}
-
-select:focus, input:focus {
+    background-color: #fff;
+  }
+  
+  select:focus, input:focus, #role-input:focus {
     border-color: #007bff;
     outline: none;
-}
-
-/* Labels */
-label {
+  }
+  
+  /* Labels */
+  label {
     margin-top: 15px;
     font-weight: bold;
     color: #555;
     display: block;
-}
-
-/* Submit Button */
-.submit-button {
+  }
+  
+  /* Submit Button */
+  .submit-button {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
@@ -60,19 +61,19 @@ label {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
+  }
+  
+  .submit-button:hover {
     background-color: #357ABD;
-}
-
-/* Red Mandatory Asterisk */
-.mandatory {
+  }
+  
+  /* Red Mandatory Asterisk */
+  .mandatory {
     color: red;
-}
-
-/* Selected Roles Styling */
-.selected-roles {
+  }
+  
+  /* Selected Roles Styling */
+  .selected-roles {
     margin-top: 10px;
     padding: 5px;
     background-color: #f1f1f1;
@@ -82,90 +83,220 @@ label {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-}
-
-/* Shares Container */
-#shares-container {
+  }
+  
+  /* Shares Container */
+  #shares-container {
     display: none;
     margin-top: 10px;
-}
-
-#shares-container input {
+  }
+  
+  #shares-container input {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 12px;
-}
-
-/* Popup Overlay */
-.popup-overlay {
-display: none;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.5);
-z-index: 1000;
-background-color: #e8e5e5f2;
-}
-
-.popup-overlay:not(.hidden) {
-display: block;
-}
-
-/* Popup Content */
-.popup-content {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background: #fff;
-padding: 30px 40px;
-border-radius: 10px;
-text-align: center;
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-width: 300px;
-}
-
-/* Shared Popup Header */
-.popup-content h3 {
-font-size: 5px;
-margin-bottom: 10px;
-}
-
-/* Restricted Popup */
-.popup-overlay.restricted .popup-content h3 {
-color: #000;
-}
-
-.popup-overlay.restricted .popup-content p {
-color: #000;
-}
-
-/* Success Popup */
-.popup-overlay.success .popup-content h3 {
-color: #000;
-}
-
-.popup-overlay.success .popup-content p {
-color: #000;
-}
-
-.close-button {
-position: absolute;
-top: 10px;
-right: 10px;
-background: transparent;
-border: none;
-font-size: 18px;
-font-weight: bold;
-cursor: pointer;
-color: #555;
-}
-
-.close-button:hover {
-color: #000;
-}
+  }
+  
+  /* Popup Overlay */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    background-color: #e8e5e5f2;
+  }
+  
+  .popup-overlay:not(.hidden) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Popup Header */
+  .popup-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #004085;
+  }
+  
+  .popup-content p {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Success Popup */
+  .popup-overlay.success .popup-content h3 {
+    color: #155724;
+  }
+  
+  .popup-overlay.success .popup-content p {
+    color: #155724;
+  }
+  
+  /* Restricted Popup */
+  .popup-overlay.restricted .popup-content h3 {
+    color: #721c24;
+  }
+  
+  .popup-overlay.restricted .popup-content p {
+    color: #721c24;
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .custom-multiselect .options-list {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  .custom-multiselect .options-list div {
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  
+  .custom-multiselect .options-list div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  
+  .custom-multiselect {
+    position: relative;
+  }
+  
+  #options-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    font-size: 12px;
+  }
+  
+  #options-list div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  #options-list div:hover {
+    background-color: #f0f8ff;
+  }
+  
+  /* Selected Tags Container */
+  #selected-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  
+  #selected-options .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    background: #cce5ff;
+    color: #004085;
+    border-radius: 16px;
+    font-size: 12px;
+    border: 1px solid #99caff;
+  }
+  
+  #selected-options .remove {
+    margin-left: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #004085;
+  }
+  
+  #selected-options .remove:hover {
+    color: red;
+  }
+  
+  /* Role Pill Tag (Extra) */
+  .role-box {
+    background-color: #e5f1ff;
+    border: 1px solid #99caff;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #004085;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .role-box .remove-role {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #004085;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    font-weight: bold;
+  }
+  
+  .role-box .remove-role:hover {
+    color: red;
+  }
+  
+  
+  
+  

@@ -39,16 +39,20 @@
                     <input type="text" id="last-name" name="last-name" required>
 
                     <label for="natural-stakeholder-role">Stakeholder Role <span class="mandatory">*</span></label>
-                    <select id="natural-stakeholder-role" name="natural-stakeholder-role" required onchange="toggleSharesField()" multiple="multiple">
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="General Manager/Representative">General Manager/Representative</option>
-                        <option value="Secretary">Secretary</option>
-                        <option value="Director">Director</option>
-                        <option value="Shareholder">Shareholder</option>
-                        <option value="UBO">UBO</option>
-                        <option value="Authorized Person (for legal person)">Authorized Person (for legal person)</option>
-                        <option value="Power of Attorney">Power of Attorney</option>
-                    </select>
+                    <div class="custom-multiselect">
+                        <div id="selected-options"></div>
+                        <input type="text" id="role-input" placeholder="Select roles..." readonly />
+                        <div id="options-list" class="options">
+                          <div data-value="General Manager/Representative">General Manager/Representative</div>
+                          <div data-value="Secretary">Secretary</div>
+                          <div data-value="Director">Director</div>
+                          <div data-value="Shareholder">Shareholder</div>
+                          <div data-value="UBO">UBO</div>
+                          <div data-value="Authorized Person (for legal person)">Authorized Person (for legal person)</div>
+                          <div data-value="Power of Attorney">Power of Attorney</div>
+                        </div>
+                        <input type="hidden" id="role-values" name="role-values" value="" />
+                      </div>
 
                     <div id="shares-container" style="display: none;">
                         <label for="number-of-shares">Number of Shares <span class="mandatory">*</span></label>
