@@ -86,8 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById("popup");
     const popupMessage = document.getElementById("popupMessage");
     const popupTitle = document.getElementById("popupTitle");
+
+    const messageElement = popup.querySelector("p");
+    messageElement.innerHTML = message;
   
-    popupMessage.textContent = message;
+    // popupMessage.textContent = message;
   
     if (type === "success") {
       popup.classList.add("success");
@@ -96,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       popup.classList.add("restricted");
       popup.classList.remove("success");
-      popupTitle.textContent = "Action Restricted";
+      popupTitle.textContent = "";
     }
   
     popup.classList.remove("hidden");
@@ -114,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const newLicenseData = newLicenseResponse.data[0];
       application_id = newLicenseData.New_License_Application.id;
       application_name = newLicenseData.New_License_Application.name;
-  
+      company_formation_type = newLicenseData.Legal_Type
+
       const applicationResponse = await ZOHO.CRM.API.getRecord({
         Entity: "Applications1",
         approved: "both",
@@ -124,7 +128,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const applicationData = applicationResponse.data[0];
       deal_id = applicationData.Deal_Name.id;
       account_id = applicationData.Account_Name.id;
-  
+
+      // GET RELATED RECORDS: APPLICATIONS - COMPANY MEMBERS
+      const companyMembersResponse = await ZOHO.CRM.API.getRelatedRecords({
+        Entity:"Applications1",
+        RecordID:"3769920000292169502",
+        RelatedList:"Company_Members",
+        page:1,
+        per_page:200
+      });
+      const companyMemberData = companyMembersResponse.data[0];
+      shareholder_type = companyMemberData.Shareholder_Type;
+
+      // CHECK SHAREHOLDER TYPE AND COMPANY FORMATION TYPE(LEGAL_TYPE)
+      if(shareholder_type === "Natural Person" && company_formation_type === "General Freelance") {
+        const message = "A <strong>Natural Person</strong> Stakeholder already exists under this application. You cannot create another Company Member.";
+        showPopup(message);
+        return;
+      }
+
       const accountResponse = await ZOHO.CRM.API.getRecord({
         Entity: "Accounts",
         approved: "both",
