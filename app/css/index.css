@@ -236,6 +236,52 @@
   #options-list div:hover {
     background-color: #f0f8ff;
   }
+
+  .custom-multiselect .legal-options-list {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  .custom-multiselect .legal-options-list div {
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  
+  .custom-multiselect .legal-options-list div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  
+  #legal-options-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    font-size: 12px;
+  }
+  
+  #legal-options-list div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  #legal-options-list div:hover {
+    background-color: #f0f8ff;
+  }
+
   
   /* Selected Tags Container */
   #selected-options {
@@ -268,6 +314,40 @@
   #selected-options .remove:hover {
     color: red;
   }
+
+
+/*  LEGAL PERSON TAG CONTAINER  */
+  #legal-selected-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  
+  #legal-selected-options .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    background: #cce5ff;
+    color: #004085;
+    border-radius: 16px;
+    font-size: 12px;
+    border: 1px solid #99caff;
+  }
+  
+  #legal-selected-options .remove {
+    margin-left: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #004085;
+  }
+  
+  #legal-selected-options .remove:hover {
+    color: red;
+  }
+  
   
   /* Role Pill Tag (Extra) */
   .role-box {
