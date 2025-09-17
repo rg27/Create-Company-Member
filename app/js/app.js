@@ -237,10 +237,11 @@ ZOHO.embeddedApp.on("PageLoad", async (entity) => {
       page: 1,
       per_page: 200,
     });
+    console.log(companyMembersRes);
 
-    const existingMember = companyMembersRes.data.find(
-      (cm) => cm.Shareholder_Type === "Natural Person"
-    );
+    const existingMember = Array.isArray(companyMembersRes.data)
+  ? companyMembersRes.data.find(cm => cm.Shareholder_Type === "Natural Person")
+  : null;
 
     // Validation logic
     if (existingMember && company_formation_type === "General Freelance") {
